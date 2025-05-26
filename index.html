@@ -5,30 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gallery Dashboard</title>
   <style>
+    :root {
+      --primary: #005baa;
+      --light-bg: #f9f9f9;
+      --text: #333;
+      --card-bg: #fff;
+      --shadow: rgba(0,0,0,0.06);
+      --shadow-hover: rgba(0,0,0,0.15);
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: var(--light-bg);
+      color: var(--text);
     }
 
     header {
-      background-color: #005baa;
+      background-color: var(--primary);
       color: white;
       padding: 2em 1em;
       text-align: center;
       border-radius: 0 0 20px 20px;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
-
-    header p {
-      font-size: 1em;
-      opacity: 0.9;
-    }
+    header h1 { margin: 0; font-size: 1.8em; }
+    header p { font-size: 1em; opacity: 0.9; }
 
     main {
       padding: 2em 1em;
@@ -38,23 +39,29 @@
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5em;
     }
 
     .dashboard-card {
-      background-color: white;
+      background-color: var(--card-bg);
       border-radius: 15px;
       padding: 1em;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px var(--shadow);
       position: relative;
-      transition: transform 0.3s, width 0.3s, height 0.3s;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
     }
-
     .dashboard-card:hover {
       transform: scale(1.02);
+      box-shadow: 0 8px 24px var(--shadow-hover);
       z-index: 10;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .dashboard-title {
@@ -65,20 +72,23 @@
       align-items: center;
       justify-content: space-between;
     }
+    .dashboard-title i {
+      margin-right: 8px;
+    }
 
     .fullscreen-btn {
       font-size: 0.9em;
       padding: 0.3em 0.7em;
-      background-color: #005baa;
+      background-color: var(--primary);
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.2s, background 0.2s;
     }
-
     .fullscreen-btn:hover {
       background-color: #003f7d;
+      transform: translateY(-2px);
     }
 
     iframe {
@@ -88,76 +98,59 @@
       border-radius: 10px;
       transition: height 0.3s ease;
     }
+    iframe::-webkit-scrollbar { width: 6px; }
+    iframe::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 3px; }
 
     @media (max-width: 768px) {
-      iframe {
-        height: 280px;
-      }
+      iframe { height: 280px; }
     }
+
+    /* Entrance delay by order */
+    .dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+    .dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+    .dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+    .dashboard-card:nth-child(4) { animation-delay: 0.4s; }
+    .dashboard-card:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Gallery Dashboard PT. CIPTA NIRMALA GROUP</h1>
-  <p>Executive Report-Fast & Easy Access</p>
-  <p>Copyright©2025 | Pengembangan Proses Bisnis & ERP</p>
+  <p>Executive Report - Fast & Easy Access</p>
+  <p>Copyright &copy;2025 | Pengembangan Proses Bisnis & ERP</p>
 </header>
 
 <main>
   <div class="dashboard-grid">
     <!-- 1. Pendapatan & Volume -->
     <div class="dashboard-card">
-      <div class="dashboard-title">
-        💵 Dashboard Pendapatan & Volume
-        <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">Fullscreen</button>
-      </div>
-      <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd"
-        allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation allow-popups-to-escape-sandbox">
+      <div class="dashboard-title"><i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">Fullscreen</button></div>
+      <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
       </iframe>
     </div>
-
     <!-- 2. Biaya -->
     <div class="dashboard-card">
-      <div class="dashboard-title">
-        💰 Dashboard Biaya
-        <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">Fullscreen</button>
-      </div>
-      <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/t3tGF"
-        allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation allow-popups-to-escape-sandbox">
+      <div class="dashboard-title"><i class="fa fa-dollar-sign"></i>Dashboard Biaya <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">Fullscreen</button></div>
+      <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/t3tGF" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
       </iframe>
     </div>
-
     <!-- 3. Inventory -->
     <div class="dashboard-card">
-      <div class="dashboard-title">
-        📊 Dashboard Inventory
-        <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">Fullscreen</button>
-      </div>
-      <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd"
-        allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation allow-popups-to-escape-sandbox">
+      <div class="dashboard-title"><i class="fa fa-boxes"></i>Dashboard Inventory <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">Fullscreen</button></div>
+      <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
       </iframe>
     </div>
-
     <!-- 4. Piutang -->
     <div class="dashboard-card">
-      <div class="dashboard-title">
-        💎 Dashboard Piutang
-        <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">Fullscreen</button>
-      </div>
-      <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd"
-        allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation allow-popups-to-escape-sandbox">
+      <div class="dashboard-title"><i class="fa fa-gem"></i>Dashboard Piutang <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">Fullscreen</button></div>
+      <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
       </iframe>
     </div>
-
     <!-- 5. Asset -->
     <div class="dashboard-card">
-      <div class="dashboard-title">
-        🏥 Dashboard Asset
-        <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">Fullscreen</button>
-      </div>
-      <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF"
-        allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation allow-popups-to-escape-sandbox">
+      <div class="dashboard-title"><i class="fa fa-hospital"></i>Dashboard Asset <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">Fullscreen</button></div>
+      <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
       </iframe>
     </div>
   </div>
@@ -165,133 +158,12 @@
 
 <script>
   function openFullscreen(id) {
-    const iframe = document.getElementById(id);
-    if (iframe.requestFullscreen) {
-      iframe.requestFullscreen();
-    } else if (iframe.webkitRequestFullscreen) {
-      iframe.webkitRequestFullscreen(); // Safari
-    } else if (iframe.msRequestFullscreen) {
-      iframe.msRequestFullscreen(); // IE/Edge
-    }
-  }
-</script>
-<!-- 🧠 AI Assistant Chat Widget -->
-<div id="chat-bubble" onclick="toggleChat()" title="Butuh bantuan? Klik di sini!">
-  🤖
-</div>
-
-<div id="chat-box">
-  <div id="chat-header">
-    Asisten ERP
-    <span onclick="toggleChat()" style="cursor:pointer;">✖</span>
-  </div>
-  <div id="chat-content">
-    <p><strong>Halo!</strong> Saya di sini untuk bantu lihat laporan, inventory, atau biaya. Ada yang bisa dibantu?</p>
-  </div>
-  <div id="chat-input">
-    <input type="text" placeholder="Ketik pertanyaan..." />
-    <button onclick="sendChat()">📨</button>
-  </div>
-</div>
-
-<style>
-  #chat-bubble {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #005baa;
-    color: white;
-    font-size: 26px;
-    padding: 12px 16px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    z-index: 1000;
-    transition: transform 0.3s;
-  }
-
-  #chat-bubble:hover {
-    transform: scale(1.1);
-  }
-
-  #chat-box {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    bottom: 90px;
-    right: 25px;
-    width: 300px;
-    max-height: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    z-index: 1001;
-    overflow: hidden;
-  }
-
-  #chat-header {
-    background: #005baa;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #chat-content {
-    flex: 1;
-    padding: 10px;
-    font-size: 0.9em;
-    overflow-y: auto;
-  }
-
-  #chat-input {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
-
-  #chat-input input {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    outline: none;
-  }
-
-  #chat-input button {
-    background: #005baa;
-    border: none;
-    color: white;
-    padding: 0 12px;
-    cursor: pointer;
-  }
-</style>
-
-<script>
-  function toggleChat() {
-    const box = document.getElementById('chat-box');
-    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
-  }
-
-  function sendChat() {
-    const input = document.querySelector('#chat-input input');
-    const content = document.getElementById('chat-content');
-    const msg = input.value.trim();
-    if (msg) {
-      const p = document.createElement('p');
-      p.innerHTML = "<strong>Kamu:</strong> " + msg;
-      content.appendChild(p);
-      input.value = '';
-
-      // Auto-reply simulasi
-      const botReply = document.createElement('p');
-      botReply.innerHTML = "<strong>fathbot:</strong> Terima kasih! Nanti akan saya proses ya 🙏";
-      content.appendChild(botReply);
-      content.scrollTop = content.scrollHeight;
-    }
+    const el = document.getElementById(id);
+    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
   }
 </script>
 
+<!-- FontAwesome CDN untuk ikon -->
+<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 </body>
 </html>

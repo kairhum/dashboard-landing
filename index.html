@@ -1,165 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gallery Dashboard</title>
-  <style>
-    :root {
-      --primary: #005baa;
-      --light-bg: #f9f9f9;
-      --text: #333;
-      --card-bg: #fff;
-      --shadow: rgba(0,0,0,0.06);
-      --shadow-hover: rgba(0,0,0,0.15);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text);
-    }
-
-    header {
-      background-color: var(--primary);
-      color: #fff;
-      padding: 2em 1em;
-      text-align: center;
-      border-radius: 0 0 20px 20px;
-    }
-    header h1 { font-size: 1.8em; margin-bottom: 0.3em; }
-    header p { font-size: 1em; opacity: 0.9; }
-
-    main {
-      max-width: 1400px;
-      margin: auto;
-      padding: 2em 1em;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5em;
-      perspective: 1200px;
-    }
-
-    .dashboard-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 1em;
-      box-shadow: 0 4px 12px var(--shadow);
-      overflow: hidden;
-      opacity: 0.8;
-      transform: translateY(20px) scale(1) rotateY(0deg);
-      transform-style: preserve-3d;
-      animation: fadeInUp 0.5s forwards;
-      transition: transform .6s, box-shadow .3s, opacity .3s;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-    .dashboard-card.selected {
-      opacity: 1;
-      transform: translateY(-10px) scale(1.1) rotateY(0deg);
-      box-shadow: 0 12px 32px var(--shadow-hover);
-      border-color: var(--primary);
-      z-index: 10;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-5px) scale(1.03) rotateY(10deg);
-    }
-
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0) scale(1) rotateY(0deg); }
-    }
-
-    .dashboard-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 1.2em;
-      margin-bottom: 0.5em;
-    }
-
-    .dashboard-title i { margin-right: 0.5em; color: var(--primary); }
-    .fullscreen-btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.4em 0.8em;
-      border-radius: 6px;
-      font-size: 0.9em;
-      transition: background .2s, transform .2s;
-    }
-    .fullscreen-btn:hover {
-      background: #003f7d;
-      transform: translateY(-2px);
-    }
-
-    iframe {
-      width: 100%;
-      height: 350px;
-      border: none;
-      border-radius: 10px;
-      transition: height .3s;
-    }
-    @media (max-width: 768px) {
-      iframe { height: 280px; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery Dashboard - PT. Cipta Nirmala Group</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <header>
     <h1>Gallery Dashboard PT. CIPTA NIRMALA GROUP</h1>
-    <p>Executive Report – Fast &amp; Easy Access</p>
-    <p>©2025 | Pengembangan Proses Bisnis &amp; ERP</p>
+    <p>Executive Report – Fast & Easy Access</p>
+    <p>&copy;2025 | Pengembangan Proses Bisnis & ERP</p>
   </header>
 
   <main>
     <div class="dashboard-grid">
-      <!-- Cards -->
-      <div class="dashboard-card" data-id="iframe3">
-        <div class="dashboard-title"><div><i class="fas fa-chart-line"></i>Pendapatan &amp; Volume</div><button class="fullscreen-btn">Fullscreen</button></div>
-        <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen sandbox></iframe>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">Fullscreen</button>
+        </div>
+        <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen></iframe>
       </div>
-      <div class="dashboard-card" data-id="iframe2">
-        <div class="dashboard-title"><div><i class="fas fa-dollar-sign"></i>Biaya</div><button class="fullscreen-btn">Fullscreen</button></div>
-        <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/t3tGF" allowfullscreen sandbox></iframe>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-boxes"></i>Dashboard Inventory</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">Fullscreen</button>
+        </div>
+        <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen></iframe>
       </div>
-      <div class="dashboard-card" data-id="iframe1">
-        <div class="dashboard-title"><div><i class="fas fa-boxes"></i>Inventory</div><button class="fullscreen-btn">Fullscreen</button></div>
-        <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen sandbox></iframe>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-gem"></i>Dashboard Piutang</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">Fullscreen</button>
+        </div>
+        <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen></iframe>
       </div>
-      <div class="dashboard-card" data-id="iframe4">
-        <div class="dashboard-title"><div><i class="fas fa-gem"></i>Piutang</div><button class="fullscreen-btn">Fullscreen</button></div>
-        <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen sandbox></iframe>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-hospital"></i>Dashboard Asset</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">Fullscreen</button>
+        </div>
+        <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF" allowfullscreen></iframe>
       </div>
-      <div class="dashboard-card" data-id="iframe5">
-        <div class="dashboard-title"><div><i class="fas fa-hospital"></i>Asset</div><button class="fullscreen-btn">Fullscreen</button></div>
-        <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF" allowfullscreen sandbox></iframe>
-      </div>
+
     </div>
   </main>
 
   <script>
-    const cards = document.querySelectorAll('.dashboard-card');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        cards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        const id = card.getAttribute('data-id');
-        document.getElementById(id).requestFullscreen?.();
-      });
-    });
+    function openFullscreen(id) {
+      const el = document.getElementById(id);
+      (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
+    }
   </script>
 
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 </body>
 </html>

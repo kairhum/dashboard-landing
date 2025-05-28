@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery Dashboard</title>
   <style>
     :root {
@@ -10,8 +10,8 @@
       --light-bg: #f9f9f9;
       --text: #333;
       --card-bg: #fff;
-      --shadow: rgba(0,0,0,0.06);
-      --shadow-hover: rgba(0,0,0,0.15);
+      --shadow: rgba(0, 0, 0, 0.06);
+      --shadow-hover: rgba(0, 0, 0, 0.15);
     }
 
     body {
@@ -28,8 +28,16 @@
       text-align: center;
       border-radius: 0 0 20px 20px;
     }
-    header h1 { margin: 0; font-size: 1.8em; }
-    header p { font-size: 1em; opacity: 0.9; }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    header p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
 
     main {
       padding: 2em 1em;
@@ -54,6 +62,7 @@
       transform: translateY(20px);
       animation: fadeInUp 0.5s forwards;
     }
+
     .dashboard-card:hover {
       transform: scale(1.02);
       box-shadow: 0 8px 24px var(--shadow-hover);
@@ -61,7 +70,10 @@
     }
 
     @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .dashboard-title {
@@ -72,6 +84,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .dashboard-title i {
       margin-right: 8px;
     }
@@ -86,6 +99,7 @@
       cursor: pointer;
       transition: transform 0.2s, background 0.2s;
     }
+
     .fullscreen-btn:hover {
       background-color: #003f7d;
       transform: translateY(-2px);
@@ -98,11 +112,20 @@
       border-radius: 10px;
       transition: height 0.3s ease;
     }
-    iframe::-webkit-scrollbar { width: 6px; }
-    iframe::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 3px; }
+
+    iframe::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    iframe::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 3px;
+    }
 
     @media (max-width: 768px) {
-      iframe { height: 280px; }
+      iframe {
+        height: 280px;
+      }
     }
 
     /* Entrance delay by order */
@@ -115,55 +138,75 @@
 </head>
 <body>
 
-<header>
-  <h1>Gallery Dashboard PT. CIPTA NIRMALA GROUP</h1>
-  <p>Executive Report - Fast & Easy Access</p>
-  <p>Copyright &copy;2025 | Pengembangan Proses Bisnis & ERP</p>
-</header>
+  <header>
+    <h1>Gallery Dashboard PT. CIPTA NIRMALA GROUP</h1>
+    <p>Executive Report - Fast & Easy Access</p>
+    <p>Copyright &copy;2025 | Pengembangan Proses Bisnis & ERP</p>
+  </header>
 
-<main>
-  <div class="dashboard-grid">
-    <!-- 1. Pendapatan & Volume -->
-    <div class="dashboard-card">
-      <div class="dashboard-title"><i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">Fullscreen</button></div>
-      <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
-    <!-- 2. Biaya -->
-    <div class="dashboard-card">
-      <div class="dashboard-title"><i class="fa fa-dollar-sign"></i>Dashboard Biaya <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">Fullscreen</button></div>
-      <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
-    <!-- 3. Inventory -->
-    <div class="dashboard-card">
-      <div class="dashboard-title"><i class="fa fa-boxes"></i>Dashboard Inventory <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">Fullscreen</button></div>
-      <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
-    <!-- 4. Piutang -->
-    <div class="dashboard-card">
-      <div class="dashboard-title"><i class="fa fa-gem"></i>Dashboard Piutang <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">Fullscreen</button></div>
-      <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
-    <!-- 5. Asset -->
-    <div class="dashboard-card">
-      <div class="dashboard-title"><i class="fa fa-hospital"></i>Dashboard Asset <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">Fullscreen</button></div>
-      <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups">
-      </iframe>
-    </div>
-  </div>
-</main>
+  <main>
+    <div class="dashboard-grid">
+      <!-- 1. Pendapatan & Volume -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">Fullscreen</button>
+        </div>
+        <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd"
+          allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      </div>
 
-<script>
-  function openFullscreen(id) {
-    const el = document.getElementById(id);
-    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
-  }
-</script>
+      <!-- 2. Biaya -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <i class="fa fa-dollar-sign"></i>Dashboard Biaya
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">Fullscreen</button>
+        </div>
+        <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd"
+          allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      </div>
 
-<!-- FontAwesome CDN untuk ikon -->
-<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+      <!-- 3. Inventory -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <i class="fa fa-boxes"></i>Dashboard Inventory
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">Fullscreen</button>
+        </div>
+        <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd"
+          allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      </div>
+
+      <!-- 4. Piutang -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <i class="fa fa-gem"></i>Dashboard Piutang
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">Fullscreen</button>
+        </div>
+        <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd"
+          allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      </div>
+
+      <!-- 5. Asset -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <i class="fa fa-hospital"></i>Dashboard Asset
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">Fullscreen</button>
+        </div>
+        <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/9osEF"
+          allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function openFullscreen(id) {
+      const el = document.getElementById(id);
+      (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
+    }
+  </script>
+
+  <!-- FontAwesome CDN untuk ikon -->
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

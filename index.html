@@ -16,17 +16,12 @@
     }
 
     body {
-      
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: var(--text);
-  background: url('header-bg.svg') no-repeat center center fixed;
-  background-size: cover;
-
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
       color: var(--text);
+      background-color: var(--light-bg);
+      background: url('header-bg.svg') no-repeat center center fixed;
+      background-size: cover;
     }
 
     header {
@@ -115,9 +110,22 @@
       border-radius: 12px;
       background: #f1f1f1;
     }
-  </style>
 
-  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    #maintenance-message {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    #maintenance-message h1 {
+      font-size: 2.5em;
+      color: #005baa;
+    }
+
+    #maintenance-message p {
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
 
@@ -127,9 +135,16 @@
     <p class="copyright">&copy;2025 | Pengembangan Proses Bisnis & ERP</p>
   </header>
 
-  <main>
-    <div class="dashboard-grid">
+  <!-- Maintenance message -->
+  <div id="maintenance-message">
+    <h1>⚙️ Maaf, Dashboard Sedang Maintenance</h1>
+    <p>Kami sedang melakukan pembaruan dan validasi data.</p>
+    <p>Silakan kembali beberapa saat lagi yaa 🙏</p>
+  </div>
 
+  <!-- Dashboard content -->
+  <main id="dashboard-content">
+    <div class="dashboard-grid">
       <div class="dashboard-card">
         <div class="dashboard-title">
           <span><i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume</span>
@@ -169,11 +184,16 @@
         </div>
         <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/p_qu23kx7vsd" allowfullscreen></iframe>
       </div>
-
     </div>
   </main>
 
   <script>
+    const maintenanceMode = true; // GANTI KE false NANTI KALAU MAU AKTIFKAN DASHBOARD
+
+    // Sembunyiin dashboard / tampilkan pesan maintenance
+    document.getElementById('dashboard-content').style.display = maintenanceMode ? 'none' : 'block';
+    document.getElementById('maintenance-message').style.display = maintenanceMode ? 'block' : 'none';
+
     function openFullscreen(id) {
       const el = document.getElementById(id);
       (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);

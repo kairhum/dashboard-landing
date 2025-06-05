@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery Dashboard - PT. Cipta Nirmala Group</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
       --primary: #005baa;
@@ -18,10 +19,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      color: var(--text);
       background-color: var(--light-bg);
-      background: url('header-bg.svg') no-repeat center center fixed;
-      background-size: cover;
+      color: var(--text);
     }
 
     header {
@@ -30,11 +29,6 @@
       text-align: center;
       padding: 2.5em 1em;
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2em;
     }
 
     .subheading {
@@ -82,12 +76,6 @@
       margin-bottom: 1em;
     }
 
-    .dashboard-title span {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-    }
-
     .fullscreen-btn {
       background-color: var(--primary);
       color: #fff;
@@ -96,11 +84,6 @@
       padding: 0.4em 0.9em;
       font-size: 0.9em;
       cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .fullscreen-btn:hover {
-      background-color: #004080;
     }
 
     iframe {
@@ -111,50 +94,21 @@
       background: #f1f1f1;
     }
 
-   #maintenance-message {
-  display: none;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--light-bg);
-  padding: 20px;
-  box-sizing: border-box;
-}
+    .maintenance-card {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease-out;
+      text-align: center;
+    }
 
-.maintenance-card {
-  background: white;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  text-align: center;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.maintenance-card h1 {
-  font-size: 2em;
-  color: var(--primary);
-  margin-bottom: 0.5em;
-}
-
-.maintenance-card p {
-  font-size: 1.1em;
-  color: #444;
-}
-
-/* Animasi biar smooth */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -166,53 +120,69 @@
     <p class="copyright">&copy;2025 | Pengembangan Proses Bisnis & ERP</p>
   </header>
 
-  <div id="maintenance-message">
-  <div class="maintenance-card">
-    <h1>⚙️ Maaf, Dashboard Sedang Maintenance</h1>
-    <p>Kami sedang melakukan pembaruan dan validasi data.</p>
-    <p>Silakan kembali beberapa saat lagi yaa 🙏</p>
-  </div>
-</div>
-
-  <!-- Dashboard content -->
-  <main id="dashboard-content">
+  <main>
     <div class="dashboard-grid">
+      <!-- PENDAPATAN -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-chart-line"></i>Dashboard Pendapatan & Volume</span>
+          <span><i class="fa fa-chart-line"></i> Dashboard Pendapatan</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe1" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
         </div>
         <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen></iframe>
       </div>
 
+      <!-- BIAYA -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-dollar-sign"></i>Dashboard Biaya</span>
+          <span><i class="fa fa-dollar-sign"></i> Dashboard Biaya</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe3" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
         </div>
         <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd" allowfullscreen></iframe>
       </div>
 
+      <!-- PIUTANG -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-gem"></i>Dashboard Piutang</span>
+          <span><i class="fa fa-gem"></i> Dashboard Piutang</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe4" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
         </div>
         <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen></iframe>
       </div>
 
+      <!-- INVENTORY -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-boxes"></i>Dashboard Inventory</span>
+          <span><i class="fa fa-boxes"></i> Dashboard Inventory</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe2" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
         </div>
         <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen></iframe>
       </div>
 
+      <!-- ASSET -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-building"></i>Dashboard Asset</span>
+          <span><i class="fa fa-building"></i> Dashboard Asset</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe5" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
         </div>
         <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/p_qu23kx7vsd" allowfullscreen></iframe>
       </div>
@@ -220,11 +190,29 @@
   </main>
 
   <script>
-    const maintenanceMode = true; // GANTI KE false NANTI KALAU MAU AKTIFKAN DASHBOARD true untuk mati, false untuk nyala
+    // ✅ GANTI STATUS MAU MAINTENANCE ATAU NGGAK true itu matiin/maintenance, false itu nyala/live
+    const dashboardStatus = {
+      iframe1: false, // Pendapatan
+      iframe3: false,  // Biaya
+      iframe4: true, // Piutang
+      iframe2: false, // Inventory
+      iframe5: false,   // Asset
+    };
 
-    // Sembunyiin dashboard / tampilkan pesan maintenance
-    document.getElementById('dashboard-content').style.display = maintenanceMode ? 'none' : 'block';
-    document.getElementById('maintenance-message').style.display = maintenanceMode ? 'block' : 'none';
+    // TAMPILKAN ATAU SEMBUNYIKAN
+    window.onload = () => {
+      Object.keys(dashboardStatus).forEach(id => {
+        const iframe = document.getElementById(id);
+        const maint = document.getElementById('maint-' + id);
+        if (dashboardStatus[id]) {
+          iframe.style.display = 'none';
+          if (maint) maint.style.display = 'block';
+        } else {
+          iframe.style.display = 'block';
+          if (maint) maint.style.display = 'none';
+        }
+      });
+    };
 
     function openFullscreen(id) {
       const el = document.getElementById(id);

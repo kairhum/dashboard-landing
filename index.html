@@ -111,19 +111,50 @@
       background: #f1f1f1;
     }
 
-    #maintenance-message {
-      display: none;
-      text-align: center;
-      padding: 80px 20px;
-    }
+   #maintenance-message {
+  display: none;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-bg);
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-    #maintenance-message h1 {
-      font-size: 2.5em;
-      color: #005baa;
-    }
+.maintenance-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
 
-    #maintenance-message p {
-      font-size: 1.2em;
+.maintenance-card h1 {
+  font-size: 2em;
+  color: var(--primary);
+  margin-bottom: 0.5em;
+}
+
+.maintenance-card p {
+  font-size: 1.1em;
+  color: #444;
+}
+
+/* Animasi biar smooth */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
     }
   </style>
 </head>
@@ -135,12 +166,13 @@
     <p class="copyright">&copy;2025 | Pengembangan Proses Bisnis & ERP</p>
   </header>
 
-  <!-- Maintenance message -->
   <div id="maintenance-message">
+  <div class="maintenance-card">
     <h1>⚙️ Maaf, Dashboard Sedang Maintenance</h1>
     <p>Kami sedang melakukan pembaruan dan validasi data.</p>
     <p>Silakan kembali beberapa saat lagi yaa 🙏</p>
   </div>
+</div>
 
   <!-- Dashboard content -->
   <main id="dashboard-content">

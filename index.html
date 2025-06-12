@@ -151,7 +151,7 @@
       <!-- PIUTANG -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-gem"></i> Dashboard Piutang</span>
+          <span><i class="fa fa-gem"></i> Dashboard Piutang (data on validation)</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">view</button>
         </div>
         <div class="maintenance-card" id="maint-iframe4" style="display:none;">
@@ -164,7 +164,7 @@
       <!-- INVENTORY -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-boxes"></i> Dashboard Inventory</span>
+          <span><i class="fa fa-boxes"></i> Dashboard Inventory(data on validation)</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">view</button>
         </div>
         <div class="maintenance-card" id="maint-iframe2" style="display:none;">
@@ -194,8 +194,8 @@
     const dashboardStatus = {
       iframe1: false, // Pendapatan
       iframe3: true,  // Biaya
-      iframe4: true, // Piutang
-      iframe2: true, // Inventory
+      iframe4: false, // Piutang
+      iframe2: false, // Inventory
       iframe5: false,   // Asset
     };
 

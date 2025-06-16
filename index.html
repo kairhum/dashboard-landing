@@ -122,7 +122,7 @@
 
   <main>
     <div class="dashboard-grid">
-      <!-- PENDAPATAN -->
+      <!-- Pendapatan -->
       <div class="dashboard-card">
         <div class="dashboard-title">
           <span><i class="fa fa-chart-line"></i> Dashboard Pendapatan</span>
@@ -135,7 +135,7 @@
         <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen></iframe>
       </div>
 
-      <!-- BIAYA -->
+      <!-- Biaya -->
       <div class="dashboard-card">
         <div class="dashboard-title">
           <span><i class="fa fa-dollar-sign"></i> Dashboard Biaya</span>
@@ -148,10 +148,10 @@
         <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd" allowfullscreen></iframe>
       </div>
 
-      <!-- PIUTANG -->
+      <!-- Piutang -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-gem"></i> Dashboard Piutang (data on validation)</span>
+          <span><i class="fa fa-gem"></i> Dashboard Piutang</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">view</button>
         </div>
         <div class="maintenance-card" id="maint-iframe4" style="display:none;">
@@ -161,10 +161,10 @@
         <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen></iframe>
       </div>
 
-      <!-- INVENTORY -->
+      <!-- Inventory -->
       <div class="dashboard-card">
         <div class="dashboard-title">
-          <span><i class="fa fa-boxes"></i> Dashboard Inventory(data on validation)</span>
+          <span><i class="fa fa-boxes"></i> Dashboard Inventory</span>
           <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">view</button>
         </div>
         <div class="maintenance-card" id="maint-iframe2" style="display:none;">
@@ -174,7 +174,7 @@
         <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen></iframe>
       </div>
 
-      <!-- ASSET -->
+      <!-- Asset -->
       <div class="dashboard-card">
         <div class="dashboard-title">
           <span><i class="fa fa-building"></i> Dashboard Asset</span>
@@ -186,9 +186,8 @@
         </div>
         <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/p_qu23kx7vsd" allowfullscreen></iframe>
       </div>
-    </div>
 
-    <!-- Pendapatan Per tindakan -->
+      <!-- Pendapatan Per Tindakan -->
       <div class="dashboard-card">
         <div class="dashboard-title">
           <span><i class="fa fa-building"></i> Dashboard Pendapatan Per Tindakan</span>
@@ -200,21 +199,20 @@
         </div>
         <iframe id="iframe6" src="https://lookerstudio.google.com/embed/reporting/f97c1092-9ceb-40b5-9bb9-c7cd19c0dca0/page/p_9q5wjovgsd" allowfullscreen></iframe>
       </div>
+
     </div>
   </main>
 
   <script>
-    // ✅ GANTI STATUS MAU MAINTENANCE ATAU NGGAK true itu matiin/maintenance, false itu nyala/live
     const dashboardStatus = {
-      iframe1: false, // Pendapatan
-      iframe3: true,  // Biaya
-      iframe4: false, // Piutang
-      iframe2: false, // Inventory
-      iframe5: false,   // Asset
-      iframe6: false, // dashboard per tindakan
+      iframe1: false,
+      iframe3: true,
+      iframe4: false,
+      iframe2: false,
+      iframe5: false,
+      iframe6: false
     };
 
-    // TAMPILKAN ATAU SEMBUNYIKAN
     window.onload = () => {
       Object.keys(dashboardStatus).forEach(id => {
         const iframe = document.getElementById(id);

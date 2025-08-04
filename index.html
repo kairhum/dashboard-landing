@@ -1,30 +1,244 @@
-<script>
-  const dashboardStatus = {
-    iframe1: false,
-    iframe2: false,
-    iframe3: false,
-    iframe4: false,
-    iframe5: false,
-    iframe6: false,
-    iframe7: false
-  };
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery Dashboard - PT. Cipta Nirmala Group</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #005baa;
+      --light-bg: #f3f6fa;
+      --text: #222;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+      --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.12);
+      --radius-lg: 20px;
+    }
 
-  window.onload = () => {
-    Object.keys(dashboardStatus).forEach(id => {
-      const iframe = document.getElementById(id);
-      const maint = document.getElementById('maint-' + id);
-      if (dashboardStatus[id]) {
-        iframe.style.display = 'none';
-        if (maint) maint.style.display = 'block';
-      } else {
-        iframe.style.display = 'block';
-        if (maint) maint.style.display = 'none';
-      }
-    });
-  };
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+    }
 
-  function openFullscreen(id) {
-    const el = document.getElementById(id);
-    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
-  }
-</script>
+    header {
+      background-color: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2.5em 1em;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    .subheading {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-top: 0.4em;
+    }
+
+    .copyright {
+      font-size: 0.85em;
+      opacity: 0.7;
+      margin-top: 0.5em;
+    }
+
+    main {
+      padding: 2em 1em;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 2em;
+    }
+
+    .dashboard-card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.2em;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .dashboard-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
+
+    .fullscreen-btn {
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4em 0.9em;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      background: #f1f1f1;
+    }
+
+    .maintenance-card {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease-out;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gallery Dashboard PT. CIPTA NIRMALA GROUP</h1>
+    <p class="subheading">Executive Report – Fast & Easy Access</p>
+    <p class="copyright">&copy;2025 | Pengembangan Proses Bisnis & ERP</p>
+  </header>
+
+  <main>
+    <div class="dashboard-grid">
+      <!-- Loop dashboards -->
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-chart-line"></i> Dashboard Pendapatan</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe1')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe1" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe1" src="https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd" allowfullscreen></iframe>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-dollar-sign"></i> Dashboard Biaya </span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe3')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe3" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe3" src="https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd" allowfullscreen></iframe>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-gem"></i> Dashboard Piutang</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe4')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe4" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe4" src="https://lookerstudio.google.com/embed/reporting/65072280-b5f9-444a-a85c-dd602604748c/page/p_p5ntjkgnsd" allowfullscreen></iframe>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-boxes"></i> Dashboard Inventory</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe2')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe2" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe2" src="https://lookerstudio.google.com/embed/reporting/e878daac-a774-4b44-812f-8ca74981a099/page/p_ej05wkbjsd" allowfullscreen></iframe>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-building"></i> Dashboard Asset</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe5')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe5" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe5" src="https://lookerstudio.google.com/embed/reporting/4610fb71-232f-449f-b3c1-892eb295b007/page/p_qu23kx7vsd" allowfullscreen></iframe>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-title">
+          <span><i class="fa fa-building"></i> Dashboard Pendapatan Per Tindakan</span>
+          <button class="fullscreen-btn" onclick="openFullscreen('iframe6')">view</button>
+        </div>
+        <div class="maintenance-card" id="maint-iframe6" style="display:none;">
+          <h4>⚙️ Dashboard ini sedang maintenance</h4>
+          <p>Mohon maaf, kami sedang update data.</p>
+        </div>
+        <iframe id="iframe6" src="https://lookerstudio.google.com/embed/reporting/f97c1092-9ceb-40b5-9bb9-c7cd19c0dca0/page/p_9q5wjovgsd" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="dashboard-title">
+        <span><i class="fa fa-building"></i> Dashboard Monitoring Inhealth Kapitasi </span>
+        <button class="fullscreen-btn" onclick="openFullscreen('iframe7')">view</button>
+      </div>
+      <div class="maintenance-card" id="maint-iframe7" style="display:none;">
+        <h4>⚙️ Dashboard ini sedang maintenance</h4>
+        <p>Mohon maaf, kami sedang update data.</p>
+      </div>
+      <iframe id="iframe7" src= "https://lookerstudio.google.com/embed/reporting/4612095c-fac3-4555-922e-661434fa8c23/page/p_timmsmk5td" allowfullscreen></iframe>
+    </div>
+  </main>
+
+  <script>
+    const dashboardStatus = {
+      iframe1: false,
+      iframe2: false,
+      iframe3: false,
+      iframe4: false,
+      iframe5: false,
+      iframe6: false,
+      iframe7: false
+    };
+
+    window.onload = () => {
+      Object.keys(dashboardStatus).forEach(id => {
+        const iframe = document.getElementById(id);
+        const maint = document.getElementById('maint-' + id);
+        if (dashboardStatus[id]) {
+          iframe.style.display = 'none';
+          if (maint) maint.style.display = 'block';
+        } else {
+          iframe.style.display = 'block';
+          if (maint) maint.style.display = 'none';
+        }
+      });
+    };
+
+    function openFullscreen(id) {
+      const el = document.getElementById(id);
+      (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
+    }
+  </script>
+
+</body>
+</html>

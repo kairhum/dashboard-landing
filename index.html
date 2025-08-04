@@ -130,6 +130,15 @@
       <!-- Semua dashboard akan dimuat dari script -->
     </div>
   </main>
+<!-- Tambahkan setelah <main> -->
+<main>
+  <div style="max-width: 600px; margin: 0 auto 2em; text-align: center;">
+    <input type="text" id="searchInput" placeholder="Cari dashboard..." style="width: 100%; padding: 0.8em; border-radius: 12px; border: 1px solid #ccc; font-size: 1em;" />
+  </div>
+  <div class="dashboard-grid" id="dashboard-container">
+    <!-- Semua dashboard akan dimuat dari script -->
+  </div>
+</main>
 
   <script>
     const dashboardStatus = {
@@ -174,6 +183,11 @@
       container.appendChild(card);
     });
 
+     // Tambah atribut judul untuk pencarian
+  card.setAttribute("data-title", title.toLowerCase());
+
+  container.appendChild(card);
+});
     window.onload = () => {
       Object.keys(dashboardStatus).forEach(id => {
         const iframe = document.getElementById(id);
@@ -187,7 +201,15 @@
         }
       });
     };
+document.getElementById("searchInput").addEventListener("input", function () {
+  const query = this.value.toLowerCase();
+  const cards = document.querySelectorAll(".dashboard-card");
 
+  cards.forEach(card => {
+    const title = card.getAttribute("data-title");
+    card.style.display = title.includes(query) ? "flex" : "none";
+  });
+});
     function openFullscreen(id) {
       const el = document.getElementById(id);
       (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
@@ -196,6 +218,7 @@
 
 </body>
 </html>
+
 
 
 

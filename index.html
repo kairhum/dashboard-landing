@@ -8,47 +8,35 @@
   <style>
     :root {
       --primary: #005baa;
-      --light-bg: #f3f6fa;
-      --text: #222;
       --card-bg: #ffffff;
+      --text: #222;
       --shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
       --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.12);
       --radius-lg: 20px;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url('https://raw.githubusercontent.com/kairhum/dashboard-landing/main/begron.jpg');
+      background: url('https://raw.githubusercontent.com/kairhum/dashboard-landing/main/bekgron.jpg') no-repeat top center;
       background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top center;
       background-attachment: scroll;
       color: var(--text);
     }
-    header {
-      text-align: center;
-      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    }
-    header img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
+
     main {
-      padding: 2em 1em;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
+
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
       gap: 2.5em 2em;
     }
+
     .dashboard-card {
       background-color: var(--card-bg);
       border-radius: var(--radius-lg);
@@ -57,12 +45,13 @@
       transition: box-shadow 0.3s ease, transform 0.2s ease;
       display: flex;
       flex-direction: column;
-      height: 100%;
     }
+
     .dashboard-card:hover {
       box-shadow: var(--shadow-hover);
       transform: translateY(-5px);
     }
+
     .dashboard-title {
       display: flex;
       justify-content: space-between;
@@ -71,6 +60,7 @@
       font-weight: 600;
       margin-bottom: 1em;
     }
+
     .fullscreen-btn {
       background-color: var(--primary);
       color: #fff;
@@ -80,6 +70,7 @@
       font-size: 0.9em;
       cursor: pointer;
     }
+
     iframe {
       width: 100%;
       height: 400px;
@@ -88,35 +79,27 @@
       background: #f1f1f1;
       flex-grow: 1;
     }
-    .maintenance-card {
-      background: #fff3cd;
-      border: 1px solid #ffeeba;
-      color: #856404;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-      animation: fadeIn 0.5s ease-out;
+
+    .search-wrapper {
+      max-width: 600px;
+      margin: 0 auto 2em;
       text-align: center;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .search-wrapper input {
+      width: 100%;
+      padding: 0.8em;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img 
-      src="https://raw.githubusercontent.com/kairhum/dashboard-landing/main/hider_rev.jpg" 
-      alt="Header Dashboard"
-    />
-  </header>
-
   <main>
-    <div style="max-width: 600px; margin: 0 auto 2em; text-align: center;">
-      <input type="text" id="searchInput" placeholder="Cari dashboard..." style="width: 100%; padding: 0.8em; border-radius: 12px; border: 1px solid #ccc; font-size: 1em;" />
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="Cari dashboard..." />
     </div>
     <div class="dashboard-grid" id="dashboard-container"></div>
   </main>
@@ -126,6 +109,7 @@
       iframe1: false, iframe2: false, iframe3: false, iframe4: false,
       iframe5: false, iframe6: false, iframe7: false, iframe8: false
     };
+
     const dashboards = [
       ["Dashboard Pendapatan", "iframe1", "https://lookerstudio.google.com/embed/reporting/a5064952-3964-4898-9896-a1e0a3959821/page/p_ewsqr90fsd", "fa-chart-line"],
       ["Dashboard Biaya", "iframe3", "https://lookerstudio.google.com/embed/reporting/301d7d74-c1f7-4c34-acf4-63d226f131ae/page/p_8b5xmsdusd", "fa-dollar-sign"],
@@ -136,6 +120,7 @@
       ["Dashboard Monitoring Inhealth Kapitasi", "iframe7", "https://lookerstudio.google.com/embed/reporting/4612095c-fac3-4555-922e-661434fa8c23/page/p_timmsmk5td", "fa-dollar-sign"],
       ["Dashboard Petty Cash", "iframe8", "https://lookerstudio.google.com/embed/reporting/60a83cff-d913-4661-a305-cfee5adcf693/page/ncQSF", "fa-money-bill-wave"]
     ];
+
     const container = document.getElementById("dashboard-container");
     dashboards.forEach(([title, id, url, icon]) => {
       const card = document.createElement("div");
@@ -146,27 +131,18 @@
           <span><i class="fa ${icon}"></i> ${title}</span>
           <button class="fullscreen-btn" onclick="openFullscreen('${id}')">view</button>
         </div>
-        <div class="maintenance-card" id="maint-${id}" style="display:none;">
-          <h4>⚙️ Dashboard ini sedang maintenance</h4>
-          <p>Mohon maaf, kami sedang update data.</p>
-        </div>
         <iframe id="${id}" src="${url}" allowfullscreen></iframe>
       `;
       container.appendChild(card);
     });
+
     window.onload = () => {
       Object.keys(dashboardStatus).forEach(id => {
         const iframe = document.getElementById(id);
-        const maint = document.getElementById("maint-" + id);
-        if (dashboardStatus[id]) {
-          iframe.style.display = "none";
-          if (maint) maint.style.display = "block";
-        } else {
-          iframe.style.display = "block";
-          if (maint) maint.style.display = "none";
-        }
+        iframe.style.display = dashboardStatus[id] ? "none" : "block";
       });
     };
+
     document.getElementById("searchInput").addEventListener("input", function () {
       const query = this.value.toLowerCase();
       const cards = document.querySelectorAll(".dashboard-card");
@@ -175,10 +151,12 @@
         card.style.display = title.includes(query) ? "flex" : "none";
       });
     });
+
     function openFullscreen(id) {
       const el = document.getElementById(id);
       (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
     }
   </script>
+
 </body>
 </html>

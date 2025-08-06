@@ -15,28 +15,29 @@
       --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.12);
       --radius-lg: 20px;
     }
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
+      background-image: url('https://raw.githubusercontent.com/kairhum/dashboard-landing/main/begron.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-attachment: scroll;
       color: var(--text);
     }
     header {
-      background-color: var(--primary);
-      color: #fff;
       text-align: center;
-      padding: 2.5em 1em;
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     }
-    .subheading {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin-top: 0.4em;
-    }
-    .copyright {
-      font-size: 0.85em;
-      opacity: 0.7;
-      margin-top: 0.5em;
+    header img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
     main {
       padding: 2em 1em;
@@ -106,26 +107,12 @@
 </head>
 <body>
 
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-</style>
-
-<header style="padding: 0; background: none;">
-  <img 
-    src="https://raw.githubusercontent.com/kairhum/dashboard-landing/main/hider_rev.jpg" 
-    alt="Header Dashboard" 
-    style="width: 100vw; height: auto; display: block; object-fit: cover; border-radius: 0;" 
-  />
-</header>
-<body style="
-  background-image: url('https://raw.githubusercontent.com/kairhum/dashboard-landing/main/begron.jpg');
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-">
+  <header>
+    <img 
+      src="https://raw.githubusercontent.com/kairhum/dashboard-landing/main/hider_rev.jpg" 
+      alt="Header Dashboard"
+    />
+  </header>
 
   <main>
     <div style="max-width: 600px; margin: 0 auto 2em; text-align: center;">
@@ -133,6 +120,7 @@
     </div>
     <div class="dashboard-grid" id="dashboard-container"></div>
   </main>
+
   <script>
     const dashboardStatus = {
       iframe1: false, iframe2: false, iframe3: false, iframe4: false,
@@ -194,12 +182,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
